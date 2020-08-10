@@ -12,20 +12,20 @@ ENV PYTHONUNBUFFERED 1
 RUN pip install --upgrade pip setuptools
 
 # create user for the Django project
-RUN useradd -ms /bin/bash myproject
+RUN useradd -ms /bin/bash ox1d0
 
 # set current user
-USER myproject
+USER ox1d0
 
 # set work directory
-WORKDIR /home/myproject
+WORKDIR /home/ox1d0
 
 # create and activate virtual environment
 RUN python3 -m venv env
 
 # copy and install pip requirements
-COPY --chown=myproject ./src/myproject/requirements /home/myproject/requirements/
-RUN ./env/bin/pip3 install -r /home/myproject/requirements/${PIP_REQUIREMENTS}
+COPY --chown=ox1d0 ./src/ox1d0/requirements /home/ox1d0/requirements/
+RUN ./env/bin/pip3 install -r /home/ox1d0/requirements/${PIP_REQUIREMENTS}
 
 # copy Django project files
-COPY --chown=myproject ./src/myproject /home/myproject/
+COPY --chown=ox1d0 ./src/ox1d0 /home/ox1d0/
